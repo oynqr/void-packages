@@ -1,0 +1,17 @@
+# Template file for 'simple-http-server'
+pkgname=simple-http-server
+version=0.6.1
+revision=1
+build_style=cargo
+hostmakedepends="pkg-config"
+makedepends="openssl-devel"
+short_desc="Simple http server written in Rust"
+maintainer="Philipp David <pd@3b.pm>"
+license="MIT"
+homepage="https://github.com/TheWaWaR/simple-http-server"
+distfiles="https://static.crates.io/crates/${pkgname}/${pkgname}-${version}.crate"
+checksum=586fdb4120d36a9bb633225e9bad6abcba059e95a152cd3e84a9548544c5a05e
+
+post_install() {
+	vlicense LICENSE
+}
