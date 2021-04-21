@@ -1,7 +1,7 @@
 # Template file for 'mDNSResponder'
 pkgname=mDNSResponder
 version=1310.80.1
-revision=1
+revision=2
 hostmakedepends="flex byacc"
 short_desc="Implements the Bonjour/Zeroconf protocol"
 maintainer="Orphaned <orphan@voidlinux.org>"
@@ -12,6 +12,7 @@ checksum=097662447e1535573484697861d9f50eceaf2c52ec2742e451ee6ffe9bbf3e75
 
 conf_files="/etc/nss_mdns.conf"
 conflicts="nss-mdns>=0"
+shlib_provides="libnss_mdns.so.2 libdns_sd.so"
 
 do_build() {
 	sed -i "s,cc ,$CC ,g" Clients/Makefile
@@ -19,6 +20,7 @@ do_build() {
 	sed -i 's,/var/run,/run,g' Makefile
 	make os=linux HAVE_IPV6=1 CC=$CC LD="$CC -shared $LDFLAGS" CFLAGS_DEBUG="$CFLAGS $CPPFLAGS" STRIP=echo OPTIONALTARG="dnsextd nss_mdns" BISON=byacc
 }
+
 do_install() {
 	cd mDNSPosix
 	# nss_mdns
@@ -40,4 +42,14 @@ do_install() {
 	vsv mdnsd
 	vsv dnsextd
 	vlicense ${wrksrc}/LICENSE
+	# header files
+	vinstall ${wrksrc}/mDNSShared/dns_sd.h 644 usr/include
+}
+
+mDNSResponder-devel_package() {
+	depends="mDNSResponder>=${version}_${revision}"
+	short_desc+=" - development files"
+	pkg_install() {
+		vmove "usr/include"
+	}
 }
