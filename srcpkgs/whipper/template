@@ -1,7 +1,7 @@
 # Template file for 'whipper'
 pkgname=whipper
-version=0.9.0
-revision=3
+version=0.10.0
+revision=1
 build_style=python3-module
 hostmakedepends="python3-setuptools_scm"
 makedepends="libsndfile-devel python3-devel"
@@ -13,7 +13,7 @@ maintainer="Stefano Ragni <st3r4g@protonmail.com>"
 license="GPL-3.0-or-later"
 homepage="https://github.com/whipper-team/whipper"
 distfiles="https://github.com/whipper-team/whipper/archive/v${version}.tar.gz"
-checksum=3caceeec7ca73c8b73147884b0f8eeacbe66af52900021b564118b88d23afbd2
+checksum=a6fba11f4460854267c610f066c185e859d7177699b50ef584fc4f705962d356
 
 
 pre_build() {
