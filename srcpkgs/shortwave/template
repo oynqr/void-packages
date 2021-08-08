@@ -1,0 +1,22 @@
+# Template file for 'shortwave'
+pkgname=shortwave
+version=2.0.1
+revision=1
+_short_rev="9bfc5ee"
+build_style=meson
+build_helper=rust
+configure_args=" -Dtag=${_short_rev}"
+hostmakedepends="cargo gettext glib-devel pkg-config rust sqlite-devel"
+makedepends="gstreamer1-devel gst-plugins-bad1-devel gtk4-devel libadwaita-devel openssl-devel rust-std sqlite-devel"
+depends="gst-plugins-good1"
+checkdepends="desktop-file-utils"
+short_desc="GTK internet radio player, written in Rust"
+maintainer="Philipp David <pd@3b.pm>"
+license="GPL-3.0-or-later"
+homepage="https://gitlab.gnome.org/World/Shortwave"
+distfiles="https://gitlab.gnome.org/World/Shortwave/uploads/1c5adbe8c3181b2ba81d944a8f9a889d/${pkgname}-${version}.tar.xz"
+checksum=feefff2dc24ff8ef7fee5114a68e70cf7df56e4f643e29318e4d0092dcfd92ae
+
+if ! [ -z "$CROSS_BUILD" ]; then
+	configure_args+=" -Dxbps_rust_target=${XBPS_CROSS_RUST_TARGET}"
+fi
