@@ -1,0 +1,15 @@
+# Template file for 'nx-udev'
+pkgname=nx-udev
+version=0.1.1
+revision=1
+short_desc="Allows regular users to communicate with Nintendo Switch devices"
+maintainer="Philipp David <pd@3b.pm>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/pheki/nx-udev"
+distfiles="https://github.com/pheki/nx-udev/archive/v${version}.tar.gz"
+checksum=36c9a12f27eac97230718f08ed40bfa73800bb9ea71b863b789a610d449be50b
+
+do_install() {
+	vinstall 60-nx.rules 644 usr/lib/udev/rules.d 60-nx.rules
+	vinstall 60-nx-rcm.rules 644 usr/lib/udev/rules.d 60-nx-rcm.rules
+}
