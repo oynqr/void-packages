@@ -1,14 +1,14 @@
 # Template file for 'mDNSResponder'
 pkgname=mDNSResponder
-version=1310.80.1
-revision=2
+version=1310.140.1
+revision=1
 hostmakedepends="flex byacc"
 short_desc="Implements the Bonjour/Zeroconf protocol"
 maintainer="Orphaned <orphan@voidlinux.org>"
 license="Apache-2.0, BSD-3-Clause"
 homepage="https://opensource.apple.com/"
 distfiles="https://opensource.apple.com/tarballs/${pkgname}/${pkgname}-${version}.tar.gz"
-checksum=097662447e1535573484697861d9f50eceaf2c52ec2742e451ee6ffe9bbf3e75
+checksum=040f6495c18b9f0557bcf9e00cbcfc82b03405f5ba6963dc147730ca0ca90d6f
 
 conf_files="/etc/nss_mdns.conf"
 conflicts="nss-mdns>=0"
