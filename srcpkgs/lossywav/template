@@ -1,0 +1,15 @@
+# Template file for 'lossywav'
+pkgname=lossywav
+version=1.4.2p.r1
+revision=1
+wrksrc="lossywav-for-posix-${version}"
+build_style=waf
+configure_args="--enable-fftw3"
+hostmakedepends="pkg-config"
+makedepends="fftw-devel"
+short_desc="Near-lossless audio processor"
+maintainer="Philipp David <pd@3b.pm>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/MoSal/lossywav-for-posix"
+distfiles="https://github.com/MoSal/lossywav-for-posix/archive/${version}.tar.gz"
+checksum=a232be986cc299a47ee61eb60ee15b52fb6c8df50f4b5e813d4a4954772781a9

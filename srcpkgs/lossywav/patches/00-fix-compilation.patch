@@ -1,0 +1,13 @@
+diff --git a/units/nWav.cpp b/units/nWav.cpp
+index b77d916..9edd8ce 100644
+--- a/units/nWav.cpp
++++ b/units/nWav.cpp
+@@ -222,7 +222,7 @@ struct tDS64Header
+ 
+     uint32_t TableLength;
+ 
+-    tChunkSize64 Table[];
++    tChunkSize64 Table[0];
+ };
+ 
+ 
