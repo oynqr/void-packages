@@ -1,0 +1,40 @@
+--- a/src/ocrmypdf/_exec/tesseract.py
++++ b/src/ocrmypdf/_exec/tesseract.py
+@@ -114,7 +114,7 @@ class TesseractVersion(Version):
+ 
+ 
+ def version() -> str:
+-    return get_version('tesseract', regex=r'tesseract\s(.+)')
++    return get_version('tesseract-ocr', regex=r'tesseract\s(.+)')
+ 
+ 
+ def has_user_words():
+@@ -141,7 +141,7 @@ def get_languages():
+         msg += output
+         return msg
+ 
+-    args_tess = ['tesseract', '--list-langs']
++    args_tess = ['tesseract-ocr', '--list-langs']
+     try:
+         proc = run(
+             args_tess,
+@@ -163,7 +163,7 @@ def get_languages():
+ 
+ 
+ def tess_base_args(langs: List[str], engine_mode: Optional[int]) -> List[str]:
+-    args = ['tesseract']
++    args = ['tesseract-ocr']
+     if langs:
+         args.extend(['-l', '+'.join(langs)])
+     if engine_mode is not None:
+--- a/src/ocrmypdf/builtin_plugins/tesseract_ocr.py
++++ b/src/ocrmypdf/builtin_plugins/tesseract_ocr.py
+@@ -92,7 +92,7 @@ def add_options(parser):
+ @hookimpl
+ def check_options(options):
+     check_external_program(
+-        program='tesseract',
++        program='tesseract-ocr',
+         package={'linux': 'tesseract-ocr'},
+         version_checker=tesseract.version,
+         need_version='4.0.0-beta.1',  # using backport for Travis CI

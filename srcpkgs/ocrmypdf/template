@@ -1,0 +1,30 @@
+# Template file for 'ocrmypdf'
+pkgname=ocrmypdf
+version=13.6.0
+revision=1
+build_style=python3-module
+hostmakedepends="python3-setuptools_scm"
+depends="ghostscript img2pdf pngquant python3-packaging python3-pdfminer.six
+ python3-pikepdf python3-Pillow python3-pluggy python3-reportlab python3-tqdm
+ tesseract-ocr-eng unpaper"
+checkdepends="python3-pytest-xdist $depends"
+short_desc="Tool to add an OCR text layer to scanned PDF files"
+maintainer="Philipp David <pd@3b.pm>"
+license="MPL-2.0"
+homepage="https://github.com/ocrmypdf/OCRmyPDF"
+changelog="https://ocrmypdf.readthedocs.io/en/latest/release_notes.html"
+distfiles="${PYPI_SITE}/o/ocrmypdf/ocrmypdf-${version}.tar.gz"
+checksum=ed2ad72ef796770c38edf5eb43392c6d166eb8959ad14a19ea0350c510b9c121
+
+pre_build() {
+	vsed -e '/setuptools_scm_git_archive/d' -i setup.py
+}
+
+pre_check() {
+	cp -r src/ocrmypdf.egg-info "$(cd build/lib* && pwd)"
+}
+
+post_install() {
+	vcompletion misc/completion/ocrmypdf.bash bash
+	vcompletion misc/completion/ocrmypdf.fish fish
+}
