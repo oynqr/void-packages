@@ -1,7 +1,7 @@
 # Template file for 'ipp-usb'
 pkgname=ipp-usb
-version=0.9.23
-revision=3
+version=0.9.24
+revision=1
 build_style=go
 go_import_path="github.com/OpenPrinting/ipp-usb"
 conf_files="/etc/ipp-usb/ipp-usb.conf"
@@ -13,7 +13,7 @@ maintainer="Philipp David <pd@3b.pm>"
 license="BSD-2-Clause"
 homepage="https://github.com/OpenPrinting/ipp-usb"
 distfiles="https://github.com/OpenPrinting/ipp-usb/archive/$version.tar.gz"
-checksum=81f325abc45b4d2b8812022d93dfcebc807c2b0688e2a9f7052f0bddfadf5b01
+checksum=e20785f9720f7d19fae9cfccb5cc3c18617d99b03da4eb94ec9df6af37abe354
 
 post_install() {
 	vsv ipp-usb
